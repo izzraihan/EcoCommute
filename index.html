@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoCommute</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js" defer></script>
+    <!-- Load OpenStreetMap -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+<body>
+    <!-- Add these sections to your body -->
+
+
+    <div id="splash-screen" class="splash-screen">
+        <h1>Selamat Datang di EcoCommute</h1>
+        <button id="get-started-btn">Get Started</button>
+    </div>
+
+    <div id="main-content" class="hidden"> <!-- Menyembunyikan konten utama sampai splash screen dihilangkan -->
+        <!-- Navbar -->
+        <nav class="navbar">
+            <img src="ecocommute.png" alt="EcoCommute Logo" class="logo">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="mission.html">Mission</a></li>
+                <li><a href="myvoucher.html">My Voucher</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Section -->
+        <div id="stats">
+    <div id="weather-info"></div>
+    <h4>Real-time Air Quality Index (AQI)</h4>
+    <div id="pollution-info"></div>
+</div>
+        <div class="container">
+            <section class="map-section">
+                <h2>Peta EcoCommute</h2>
+                <div id="map" style="display: none;"></div> <!-- Peta disembunyikan awalnya -->
+            </section>
+            
+            <section class="search-section">
+                <h2>Telusuri Perjalanan</h2>
+                <input type="text" id="start-location" placeholder="Mulai perjalanan dari...">
+                <input type="text" id="end-location" placeholder="Tujuan perjalanan...">
+                <button id="search-route">Cari Rute</button>
+                <div id="route-result"></div>
+            </section>
+
+            <section class="highlight-section">
+                <h2>Highlight Event</h2>
+                <p>Jika Anda berjalan kaki sejauh 5 km, Anda bisa mendapatkan voucher belanja!</p>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 EcoCommute. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>

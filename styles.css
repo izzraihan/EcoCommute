@@ -1,0 +1,189 @@
+/* Reset default margin/padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-image: url('bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+}
+
+/* Navbar Modern */
+.navbar {
+    background-color: transparent;
+    padding: 0.5rem 2rem; /* Kurangi padding agar lebih rapat */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    transition: background-color 0.3s ease;
+}
+
+.navbar .logo {
+    height: 60px; /* Ukuran logo disesuaikan */
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0; /* Hapus margin dari nav links */
+}
+
+.nav-links li a {
+    background-color: transparent; /* Ganti warna latar belakang menjadi transparan */
+    color: white; /* Warna teks navbar */
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 10px 15px; /* Tambahkan padding untuk memberi ruang pada tombol */
+    border-radius: 5px; /* Buat sudut lebih membulat */
+    transition: all 0.3s ease; /* Efek transisi untuk hover */
+}
+
+.nav-links li a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Ganti warna latar belakang saat hover */
+    color: #ff9800; /* Warna teks saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan efek bayangan saat hover */
+}
+
+/* Container Styling */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 3rem 2rem;
+    background-color: rgba(255, 255, 255, 0.2); /* Transparansi lebih halus */
+    border-radius: 15px; /* Membuat sudut lebih bulat */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
+}
+
+.map-section, .search-section, .highlight-section {
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.85); /* Kontainer transparan dengan putih lebih halus */
+    padding: 1.5rem;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 12px; /* Membuat sudut lebih bulat */
+    transition: transform 0.3s ease;
+}
+
+.map-section:hover, .search-section:hover, .highlight-section:hover {
+    transform: translateY(-5px); /* Efek hover yang halus */
+}
+
+h2 {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    color: #333;
+}
+
+/* Map Styling */
+#map {
+    width: 100%;
+    height: 300px;
+    background-color: #eaeaea;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Input & Button Styling */
+input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input:focus {
+    border-color: #007BFF;
+}
+
+button {
+    padding: 0.75rem 1.5rem;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #ff9800;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Footer Styling */
+footer {
+    background-color: transparent;
+    color: white;
+    padding: 1rem 2rem;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+footer button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+footer button:hover {
+    background-color: #ff9800;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .map-section, .search-section, .highlight-section {
+        width: 100%;
+    }
+}
+
+/* styles.css */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('splash.jpg'); /* Ganti dengan nama file gambar Anda */
+    background-size: cover; /* Agar gambar mengisi seluruh layar */
+    background-position: center; /* Agar gambar terletak di tengah */
+    color: white;
+    flex-direction: column;
+    z-index: 1000; /* Agar tetap di atas konten lain */
+}
+
+.hidden {
+    display: none; /* Sembunyikan konten utama */
+}
