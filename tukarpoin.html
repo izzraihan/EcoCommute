@@ -31,7 +31,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/mission.css">
+  <link rel="stylesheet" href="css/tukarpoin.css">
 
 </head>
 
@@ -65,13 +65,13 @@
                 <a class="nav-link" href="index.html">Home </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="main.html"> Main</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="mission.html">Mission <span class="sr-only">(current)</span> </a>
+                <a class="nav-link" href="Main.html"> Main</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="tukarpoin.html">Tukar Poin</a>
+                <a class="nav-link" href="mission.html">Mission</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="why.html">Tukar Poin <span class="sr-only">(current)</span> </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="login.html"> <i class="fa fa-user" aria-hidden="true"></i> Login</a>
@@ -80,7 +80,7 @@
                   <button class="btn my-2 my-sm-0 nav_search-btn" type="button" onclick="location.reload();">
                     <i class="fa fa-refresh" aria-hidden="true"></i>
                   </button>
-              </form>
+                </button>
               </form>
             </ul>
           </div>
@@ -90,58 +90,70 @@
     <!-- end header section -->
   </div>
 
+<section id="tukar-poin-section">
+    <h2>Tukar Poin Anda</h2>
+    <div class="user-info">
+        <p>Total Poin Anda: <span id="total-poin"><?php echo $_SESSION['total_poin']; ?></span></p>
+    </div>
 
-  <!-- mission section -->
-
-  <section id="mission-section">
-        <h2>Misi Anda</h2>
-
-        <div class="mission">
-            <h3>Menggunakan Transjakarta 5 hari berturut turut</h3>
-            <p>Progress: 3/5 hari</p>
-            <div class="progress-bar">
-                <div class="progress" style="width: 60%;"></div>
+    <form action="tukarpoin.php" method="POST">
+        <div class="rewards">
+            <div class="reward-item">
+                <h3>Transfer ke bank Rp 50.000</h3>
+                <p>Harga: 250 poin</p>
+                <input type="hidden" name="nama_hadiah" value="Transfer ke bank Rp 50.000">
+                <input type="hidden" name="poin" value="250">
+                <button type="submit">Tukar</button>
             </div>
-            <p>Rewards: 100 poin</p>
-            <button class="claim-btn" data-reward="100" data-status="incomplete">Claim</button>
-            <p class="note">Note: Jika berhenti maka progress akan mulai dari 0 kembali!</p>
-        </div>
 
-        <div class="mission">
-            <h3>Berjalan 10.000 langkah selama 1 minggu</h3>
-            <p>Progress: 6123/10000 langkah</p>
-            <div class="progress-bar">
-                <div class="progress" style="width: 61.23%;"></div>
+            <div class="reward-item">
+                <h3>Transfer ke bank Rp 100.000</h3>
+                <p>Harga: 500 poin</p>
+                <input type="hidden" name="nama_hadiah" value="Transfer ke bank Rp 100.000">
+                <input type="hidden" name="poin" value="500">
+                <button type="submit">Tukar</button>
             </div>
-            <p>Rewards: 250 poin</p>
-            <button class="claim-btn" data-reward="250" data-status="incomplete">Claim</button>
-        </div>
 
-        <div class="mission">
-            <h3>Bersepeda selama 1 minggu</h3>
-            <p>Progress: 5/5 hari</p>
-            <div class="progress-bar">
-                <div class="progress" style="width: 100%;"></div>
+            <div class="reward-item">
+                <h3>Transfer ke bank Rp 150.000</h3>
+                <p>Harga: 750 poin</p>
+                <input type="hidden" name="nama_hadiah" value="Transfer ke bank Rp 150.000">
+                <input type="hidden" name="poin" value="750">
+                <button type="submit">Tukar</button>
             </div>
-            <p>Rewards: 100 poin</p>
-            <button class="claim-btn" data-reward="100" data-status="complete">Claim</button>
-        </div>
 
-        <div class="mission">
-            <h3>Menggunakan KRL selama 2 minggu</h3>
-            <p>Progress: 14/14 hari</p>
-            <div class="progress-bar">
-                <div class="progress" style="width: 100%;"></div>
+            <div class="reward-item">
+                <h3>Transfer ke bank Rp 200.000</h3>
+                <p>Harga: 1000 poin</p>
+                <input type="hidden" name="nama_hadiah" value="Transfer ke bank Rp 200.000">
+                <input type="hidden" name="poin" value="1000">
+                <button type="submit">Tukar</button>
             </div>
-            <p>Rewards: 250 poin</p>
-            <button class="claim-btn" data-reward="250" data-status="complete">Claim</button>
+
+            <div class="reward-item">
+                <h3>Transfer ke bank Rp 250.000</h3>
+                <p>Harga: 1250 poin</p>
+                <input type="hidden" name="nama_hadiah" value="Transfer ke bank Rp 250.000">
+                <input type="hidden" name="poin" value="1250">
+                <button type="submit">Tukar</button>
+            </div>
         </div>
-    </section>
+    </form>
 
-  <!-- end mission section -->
+    <!-- Modal Konfirmasi -->
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <p>Apakah Anda yakin ingin menukar <span id="reward-name"></span> dengan <span id="reward-points"></span> poin?</p>
+            <button id="confirm-exchange" class="confirm-btn">Ya, Tukar</button>
+        </div>
+    </div>
 
-     <!-- info section -->
+  <!-- tukar poin section -->
 
+  <!-- info section -->
+
+  
   <section class="info_section layout_padding2">
     <div class="container">
       <div class="row">
@@ -234,7 +246,7 @@
 
   <!-- end info section -->
 
-  <!-- Footer Section -->
+  <!-- footer section -->
 <section class="footer_section">
     <div class="container">
         <p>
@@ -243,9 +255,10 @@
         </p>
     </div>
 </section>
+  <!-- footer section -->
 
   <!-- jQery -->
-  <script src="js/mission.js"></script>
+  <script src="js/tukarpoin.js"></script>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">

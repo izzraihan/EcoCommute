@@ -2,6 +2,7 @@
 <html>
 
 <head>
+
   <!-- Basic -->
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -31,9 +32,11 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/mission.css">
+  <link href="css/main.css" rel="stylesheet" />
 
 </head>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
 <body class="sub_page">
 
@@ -44,6 +47,7 @@
         <img src="images/hero-bg.png" alt="">
       </div>
     </div>
+
 
     <!-- header section strats -->
     <header class="header_section">
@@ -64,11 +68,11 @@
               <li class="nav-item ">
                 <a class="nav-link" href="index.html">Home </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="main.html"> Main</a>
-              </li>
               <li class="nav-item active">
-                <a class="nav-link" href="mission.html">Mission <span class="sr-only">(current)</span> </a>
+                <a class="nav-link" href="main.html"> Main <span class="sr-only">(current)</span> </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="mission.html">Mission</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="tukarpoin.html">Tukar Poin</a>
@@ -81,7 +85,6 @@
                     <i class="fa fa-refresh" aria-hidden="true"></i>
                   </button>
               </form>
-              </form>
             </ul>
           </div>
         </nav>
@@ -90,57 +93,61 @@
     <!-- end header section -->
   </div>
 
+  <!-- main section -->
+<div class="flex-container">
+    <!-- Content -->
+</div>
+ <div id="stats">
+  <div id="location-info"></div>
+    <div id="weather-info"></div>
+    <div id="pollution-info"></div>
+</div>
+        <div class="main-container">
+    <!-- Kolom peta -->
+    <div class="column map-column">
+        <h2>Peta EcoCommute</h2>
+        <div id="map" style="height: 300px;"></div>
+    </div>
 
-  <!-- mission section -->
+    <!-- Kolom Telusuri Perjalanan -->
+    <div class="column">
+        <h2>Telusuri Perjalanan</h2>
+        <input type="text" id="start-location" placeholder="Mulai perjalanan dari...">
+        <input type="text" id="end-location" placeholder="Tujuan perjalanan...">
+        <button id="search-route">Cari Rute</button>
+        <div id="route-result" class="result-info"></div>
+    </div>
 
-  <section id="mission-section">
-        <h2>Misi Anda</h2>
+    <!-- Kolom Highlight Event -->
+    <div class="column">
+        <h2>Highlight Event</h2>
+        <p>Berjalan kaki sejauh 5 km</p>
+        <p>Menggunakan transportasi umum selama 1 hari</p>
+        <p>Bersepeda sejauh 10 km</p>
+    </div>
+</div>
 
-        <div class="mission">
-            <h3>Menggunakan Transjakarta 5 hari berturut turut</h3>
-            <p>Progress: 3/5 hari</p>
-            <div class="progress-bar">
-                <div class="progress" style="width: 60%;"></div>
-            </div>
-            <p>Rewards: 100 poin</p>
-            <button class="claim-btn" data-reward="100" data-status="incomplete">Claim</button>
-            <p class="note">Note: Jika berhenti maka progress akan mulai dari 0 kembali!</p>
-        </div>
+    <script>
+        // Event listener untuk tombol "Cari Rute"
+        document.getElementById('search-route').addEventListener('click', function() {
+            var startLocation = document.getElementById('start-location').value;
+            var endLocation = document.getElementById('end-location').value;
 
-        <div class="mission">
-            <h3>Berjalan 10.000 langkah selama 1 minggu</h3>
-            <p>Progress: 6123/10000 langkah</p>
-            <div class="progress-bar">
-                <div class="progress" style="width: 61.23%;"></div>
-            </div>
-            <p>Rewards: 250 poin</p>
-            <button class="claim-btn" data-reward="250" data-status="incomplete">Claim</button>
-        </div>
+            if (startLocation && endLocation) {
+              
+                var cost = 15000;  // Biaya 
+                var transportType = "Bus";  // Transportasi
 
-        <div class="mission">
-            <h3>Bersepeda selama 1 minggu</h3>
-            <p>Progress: 5/5 hari</p>
-            <div class="progress-bar">
-                <div class="progress" style="width: 100%;"></div>
-            </div>
-            <p>Rewards: 100 poin</p>
-            <button class="claim-btn" data-reward="100" data-status="complete">Claim</button>
-        </div>
+                // Menampilkan hasil
+                document.getElementById('route-result').innerHTML = 
+                    `Perjalanan dari <b>${startLocation}</b> ke <b>${endLocation}</b> akan membutuhkan biaya sekitar Rp ${cost.toLocaleString()} dengan ${transportType}.`;
+            } else {
+                alert('Masukkan lokasi awal dan tujuan');
+            }
+        });
+    </script>
 
-        <div class="mission">
-            <h3>Menggunakan KRL selama 2 minggu</h3>
-            <p>Progress: 14/14 hari</p>
-            <div class="progress-bar">
-                <div class="progress" style="width: 100%;"></div>
-            </div>
-            <p>Rewards: 250 poin</p>
-            <button class="claim-btn" data-reward="250" data-status="complete">Claim</button>
-        </div>
-    </section>
-
-  <!-- end mission section -->
-
-     <!-- info section -->
+   <!-- main section -->
 
   <section class="info_section layout_padding2">
     <div class="container">
@@ -211,7 +218,7 @@
               <a class="" href="mission.html">
                 Mission
               </a>
-              <a class="" href="myvoucher.html">
+              <a class="" href="why.html">
                 My Voucher
               </a>
             </div>
@@ -245,7 +252,92 @@
 </section>
 
   <!-- jQery -->
-  <script src="js/mission.js"></script>
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- OSRM untuk routing -->
+<script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+<script>
+    // Inisialisasi peta
+    var map = L.map('map').setView([-6.200000, 106.816666], 13); // Lokasi default di Jakarta
+
+    // Menambahkan tile OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var control = L.Routing.control({
+        waypoints: [], // Awalnya tidak ada titik
+        routeWhileDragging: true,
+        geocoder: L.Control.Geocoder.nominatim() // Geocoder untuk mengubah nama tempat menjadi koordinat
+    }).addTo(map);
+
+    // Event listener untuk tombol "Cari Rute"
+    document.getElementById('search-route').addEventListener('click', function() {
+        var startLocation = document.getElementById('start-location').value;
+        var endLocation = document.getElementById('end-location').value;
+
+        if (startLocation && endLocation) {
+            // Menggunakan geocoder untuk mendapatkan koordinat lokasi
+            L.Control.Geocoder.nominatim().geocode(startLocation, function(resultsStart) {
+                L.Control.Geocoder.nominatim().geocode(endLocation, function(resultsEnd) {
+                    if (resultsStart.length > 0 && resultsEnd.length > 0) {
+                        var startLatLng = resultsStart[0].center;
+                        var endLatLng = resultsEnd[0].center;
+
+                        // Set waypoints di Leaflet Routing Machine
+                        control.setWaypoints([
+                            L.latLng(startLatLng.lat, startLatLng.lng),
+                            L.latLng(endLatLng.lat, endLatLng.lng)
+                        ]);
+                    } else {
+                        alert('Lokasi tidak ditemukan');
+                    }
+                });
+            });
+        } else {
+            alert('Masukkan lokasi awal dan tujuan');
+        }
+    });
+</script>
+
+  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+  <!-- popper js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+  </script>
+  <!-- bootstrap js -->
+  <script type="text/javascript" src="js/bootstrap.js"></script>
+  <!-- owl slider -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
+  </script>
+  <!-- custom js -->
+  <script type="text/javascript" src="js/custom.js"></script>
+  <!-- Google Map -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
+  </script>
+  <!-- End Google Map -->
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<!-- Inisialisasi Peta OpenStreetMap -->
+<script>
+  // Inisialisasi peta
+  var map = L.map('map').setView([-6.200000, 106.816666], 13); // Lokasi default di Jakarta
+
+  // Menambahkan tile OpenStreetMap
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+</script>
+
+</body>
+
+</html>
+  <!-- jQery -->
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">

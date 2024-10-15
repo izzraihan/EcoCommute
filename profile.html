@@ -31,7 +31,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
-    <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/profile.css">
 
 </head>
 
@@ -86,22 +86,28 @@
     <!-- end header section -->
   </div>
 
-  <!-- Login section -->
+  <!-- Profile section -->
     <div class="container">
-        <h2>Login</h2>
-            <form action="login.php" method="POST">
-            <label for="login-username">Username:</label>
-            <input type="text" id="login-username" name="username" required><br>
+        <h2>Selamat datang, <span id="username"></span>!</h2>
+        <p>Total Poin Anda: <span id="total-poin">0</span></p>
 
-            <label for="login-password">Password:</label>
-            <input type="password" id="login-password" name="password" required><br>
+        <h3>Riwayat Penukaran Poin</h3>
+        <table id="riwayat-table">
+            <thead>
+                <tr>
+                    <th>Nama Hadiah</th>
+                    <th>Poin yang Ditukar</th>
+                    <th>Tanggal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data akan diisi oleh JavaScript -->
+            </tbody>
+        </table>
 
-            <button type="submit">Login</button>
-        </form>
-
-        <p class="register-link">Belum punya akun? <a href="register.html">Daftar di sini</a></p>
+        <button id="logout-btn">Logout</button>
     </div>
-  <!-- Login section -->
+  <!-- Profile section -->
 
   <!-- footer section -->
 <!-- footer section -->
@@ -113,7 +119,7 @@
   <!-- end footer section -->
 
   <!-- jQery -->
-  <script src="js/login.js"></script>
+  <script src="js/profile.js"></script>
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <!-- popper js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
